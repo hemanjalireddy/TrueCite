@@ -1,10 +1,10 @@
-# 🛡️ TrueCite: AI Compliance Auditor
+# TrueCite: AI Compliance Auditor
 
 **For Readily Take-Home Assignment**
 
 TrueCite is an automated compliance auditing tool designed to verify healthcare policies against regulatory requirements.
 
-## 🚀 The Stack
+## The Stack
 * **Language:** Python 3.10
 * **Manager:** Poetry
 * **Interface:** Streamlit
