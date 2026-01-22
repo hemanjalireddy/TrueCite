@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    container_name: true-cite-backend
+    command: uvicorn backend.main:app --host 0.0.0.0 --port 8000
+    volumes:
+      - .:/app
+      - true_cite_vdb:/app/chroma_db
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - PYTHONPATH=/app/src
+    ports:
+      - "8000:8000"
+    networks:
+      - true_cite_net
+
+  frontend:
+    build: .
+    container_name: true-cite-frontend
+    command: streamlit run src/frontend/app.py --server.port 8501 --server.address 0.0.0.0
+    volumes:
+      - .:/app
+    environment:
+      - API_URL=http://backend:8000
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend
+    networks:
+      - true_cite_net
+
+networks:
+  true_cite_net:
+    driver: bridge
+
+volumes:
+  true_cite_vdb:

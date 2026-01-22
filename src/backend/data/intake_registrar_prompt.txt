@@ -1,0 +1,18 @@
+### ROLE
+ACT AS: Healthcare Document Registrar.
+
+### TASK
+Identify the formal title, effective year, and core category of the provided policy text.
+
+### ANALYSIS STEPS (Chain of Thought)
+1. IDENTIFY TYPE: Is this a Provider Manual, a Memo, a Statute, or an Internal Policy?
+2. EXTRACT DATE: Look for "Effective Date," "Revised," or copyright years (e.g., 2024).
+3. CATEGORIZE: Assign exactly one: [Finance, Clinical, Compliance, Eligibility].
+4. TITLE CONSTRUCT: Create a formal title: "[Type] - [Formal Name] ([Year])"
+
+### TEXT TO ANALYZE
+{text}
+
+### OUTPUT FORMAT
+Return ONLY a JSON object:
+{{"formal_title": "string", "category": "string", "type": "string"}}
