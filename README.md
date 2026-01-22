@@ -14,26 +14,26 @@ TrueCite is an automated compliance auditing tool designed to verify healthcare 
 
 ## Key Capabilities
 
-### 1. 🧠 Automated Question Extraction
+### 1.Automated Question Extraction
 * **Endpoint:** `/audit/run`
 * **Function:** Automatically parses unstructured "Audit Requirement" PDFs (e.g., standard regulatory forms) to identify and list all compliance questions.
 * **Tech:** Uses an extraction engine to separate specific requirements from general form text.
 
-### 2. ⚡ Real-Time Streaming Audit
+### 2. Real-Time Streaming Audit
 * **Architecture:** Async generator pattern with Heartbeat mechanism.
 * **Function:** Processes long lists of audit questions sequentially without connection timeouts.
 * **Experience:** The frontend receives results item-by-item via NDJSON streaming, allowing users to see progress instantly rather than waiting for the entire batch to finish.
 
-### 3. 👁️ Transparent "Chain of Thought" (CoT)
+### 3. Transparent "Chain of Thought" (CoT)
 * **Data Model:** Returns specific `thinking`, `status`, and `rationale` fields.
 * **Function:** Unlike "Black Box" AI, TrueCite exposes its internal reasoning step-by-step. It classifies findings into **Compliant**, **Non-Compliant**, **Partial**, or **Missing Info**.
 
-### 4. 📚 Bulk Policy Knowledge Base
+### 4. Bulk Policy Knowledge Base
 * **Endpoint:** `/ingest/policies`
 * **Function:** Accepts ZIP archives of PDF policies.
 * **Tech:** Implements "Soft Filtering" where policy titles are injected into vector chunks (`[[POLICY: Name]]`) to ensure the AI can distinguish between similar rules in different documents.
 
-### 5. 🔍 Hybrid Retrieval System
+### 5. Hybrid Retrieval System
 * **Function:** Combines Vector Search (semantic meaning) with BM25 (keyword matching) to ensure that specific ID numbers (like "APL 25-008") are caught even if semantic similarity is low.
 
 ## Setup & Deployment
